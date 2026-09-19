@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mikay Clean Co. - professional residential and commercial cleaning. Deep cleans, janitorial services, UVC disinfection and more." />
+  <title>Mikay Clean Co. &mdash; Professional Cleaning Services</title>
+
+  <!-- Google Font: Plus Jakarta Sans (rounded geometric sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="top">
+
+  <!-- Accessibility: a "skip to content" link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= STICKY NAVIGATION ================= -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+
+      <!-- Left: logo (inline SVG sparkle + broom) + wordmark -->
+      <a class="brand" href="index.html" aria-label="Mikay Clean Co. - back to top">
+        <svg class="brand-icon" width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect width="48" height="48" rx="14" fill="#2E7D32" />
+          <!-- sparkle -->
+          <path d="M24 6l2.9 6.4 7 .9-5.2 4.9 1.4 6.9L24 22.2l-6.1 3.9 1.4-6.9-5.2-4.9 7-.9L24 6z" fill="#fff" />
+          <!-- broom -->
+          <g transform="translate(20 26) rotate(-35)">
+            <rect x="0" y="0" width="3" height="13" rx="1.5" fill="#fff" />
+            <rect x="-3.5" y="10" width="10" height="6" rx="2" fill="#dff2fb" />
+            <rect x="-3" y="13" width="2" height="6" rx="1" fill="#fff" />
+            <rect x="0" y="13" width="2" height="6" rx="1" fill="#fff" />
+            <rect x="3" y="13" width="2" height="6" rx="1" fill="#fff" />
+          </g>
+        </svg>
+        <span class="brand-name">Mikay Clean Co.</span>
+      </a>
+
+      <!-- Hamburger button (mobile only) -->
+      <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Desktop menu -->
+      <ul class="nav-links">
+        <li><a class="nav-link active" href="index.html">Home</a></li>
+
+        <li class="dropdown">
+          <button id="servicesBtn" class="dropdown-btn" aria-expanded="false" aria-controls="servicesMenu">
+            Services <span class="arrow">&#9660;</span>
+          </button>
+          <ul id="servicesMenu" class="dropdown-menu">
+            <li><a href="services/home-cleaning.html">Home Cleaning</a></li>
+            <li><a href="services/business-cleaning.html">Business Cleaning</a></li>
+            <li><a href="services/special-services.html">Special Services</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <button id="projectsBtn" class="dropdown-btn" aria-expanded="false" aria-controls="projectsMenu">
+            Projects <span class="arrow">&#9660;</span>
+          </button>
+          <ul id="projectsMenu" class="dropdown-menu">
+            <li><a href="projects/residential-projects.html">Residential Projects</a></li>
+            <li><a href="projects/commercial-projects.html">Commercial Projects</a></li>
+            <li><a href="projects/industrial-projects.html">Industrial Projects</a></li>
+          </ul>
+        </li>
+
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link btn-nav" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Mobile menu (hidden by default, toggled by the hamburger).
+         Services & Projects inside it work as expandable accordions
+         with their own unique button/menu ids. -->
+    <div id="mobileMenu" class="mobile-menu">
+      <a class="mobile-link" href="index.html">Home</a>
+
+      <div class="mobile-accordion">
+        <button id="servicesAccBtn" class="mobile-accordion-btn" aria-expanded="false" aria-controls="servicesAccMenu">
+          Services <span class="arrow">&#9660;</span>
+        </button>
+        <ul id="servicesAccMenu" class="mobile-accordion-menu">
+          <li><a href="services/home-cleaning.html">Home Cleaning</a></li>
+          <li><a href="services/business-cleaning.html">Business Cleaning</a></li>
+          <li><a href="services/special-services.html">Special Services</a></li>
+        </ul>
+      </div>
+
+      <div class="mobile-accordion">
+        <button id="projectsAccBtn" class="mobile-accordion-btn" aria-expanded="false" aria-controls="projectsAccMenu">
+          Projects <span class="arrow">&#9660;</span>
+        </button>
+        <ul id="projectsAccMenu" class="mobile-accordion-menu">
+          <li><a href="projects/residential-projects.html">Residential Projects</a></li>
+          <li><a href="projects/commercial-projects.html">Commercial Projects</a></li>
+          <li><a href="projects/industrial-projects.html">Industrial Projects</a></li>
+        </ul>
+      </div>
+
+      <a class="mobile-link" href="about.html">About</a>
+      <a class="mobile-link mobile-contact" href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+
+        <!-- Left column: headline, text, buttons -->
+        <div class="hero-text">
+          <h1>The Professional Approach<br /><span class="block">to Clean.</span></h1>
+          <p>
+            Trained, insured, and friendly cleaning teams for homes and businesses across the metro.<br />
+            Eco-friendly products and hospital-grade disinfection on every visit.<br />
+            Book in minutes &mdash; we&rsquo;ll bring the shine, you keep the time.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html">Free Quote</a>
+            <a class="btn btn-outline" href="#">
+              <svg class="play-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="2" fill="none" />
+                <path d="M10 8.25v7.5l6-3.75-6-3.75z" fill="currentColor" />
+              </svg>
+              Watch Video
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column: photo with paint-splash behind it -->
+        <!--
+          IMAGE NOTE: this is a placeholder photo. To use your own,
+          drop a file like images/hero-cleaner.jpg into the folder and
+          change the src below to "images/hero-cleaner.jpg".
+        -->
+        <div class="hero-visual">
+          <svg class="splash" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g class="blob" fill="#2E7D32">
+              <ellipse cx="210" cy="205" rx="130" ry="120" />
+              <circle cx="120" cy="130" r="65" />
+              <circle cx="300" cy="140" r="55" />
+              <circle cx="150" cy="310" r="58" />
+              <circle cx="285" cy="300" r="48" />
+              <ellipse cx="250" cy="95" rx="70" ry="26" transform="rotate(-20 250 95)" />
+            </g>
+            <g class="blob" fill="#6FBF73" opacity="0.65">
+              <circle cx="330" cy="210" r="40" />
+              <circle cx="95" cy="230" r="36" />
+              <circle cx="230" cy="90" r="26" />
+            </g>
+          </svg>
+          <img class="hero-img" src="images/clean.png"
+               alt="A smiling Mikay Clean Co. cleaner in a grey work shirt wearing yellow gloves and holding a spray bottle."
+               fetchpriority="high" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= WHY BARRET'S (card carousel) ================= -->
+    <section class="why" id="why">
+      <div class="container">
+        <h2>Why Mikay Clean Co.</h2>
+        <p class="section-sub">
+          Deep cleans, daily janitorial care, or one-time move-out specials &mdash; we bring the same polish to every room we touch.<br />
+          Here is why thousands of homes, offices, and storefronts trust Mikay Clean Co. to keep them spotless.
+        </p>
+
+        <div class="carousel-wrap">
+          <button class="carousel-btn prev" aria-label="Previous cards">&#8249;</button>
+
+          <div class="carousel" id="carousel" tabindex="0" aria-label="Mikay Clean Co. highlights, swipe or use the arrow buttons">
+            <article class="carousel-card">
+              <!-- Swap images/ + alt text with your own photos in an images/ folder -->
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop"
+                   alt="Mikay Clean Co. cleaner sweeping a bright family living room." loading="lazy" />
+              <h3>A Cleaner Environment</h3>
+              <p>We work around your family and pets so every room comes out fresh, tidy, and healthy to breathe in.</p>
+            </article>
+
+            <article class="carousel-card">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop"
+                   alt="Mikay Clean Co. manager walking a client through their building with a tablet." loading="lazy" />
+              <h3>What We Offer</h3>
+              <p>Walk with us through your home or office and get a tailored cleaning plan that fits your budget and standards.</p>
+            </article>
+
+            <article class="carousel-card">
+              <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?q=80&w=800&auto=format&fit=crop"
+                   alt="Mikay Clean Co. technician sitting beside a professional vacuum cleaner." loading="lazy" />
+              <h3>Safety Is Our Business</h3>
+              <p>Trained technicians use tested products and secure equipment so every surface is safe for the people who use it.</p>
+            </article>
+
+            <article class="carousel-card">
+              <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop"
+                   alt="Cleaning tools and disinfection supplies arranged on a clean counter." loading="lazy" />
+              <h3>Health &amp; Safety First</h3>
+              <p>Green-certified supplies and UVC surface disinfection keep germs away &mdash; without harsh residue or strong smells.</p>
+            </article>
+          </div>
+
+          <button class="carousel-btn next" aria-label="Next cards">&#8250;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT (small band) ================= -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2>About Mikay Clean Co.</h2>
+        <p class="section-sub">
+          Mikay Clean Co. is a family-run cleaning company built on one simple idea: everyone deserves a truly clean space.
+          We train every cleaner in-house, background-check our team, and guarantee every single visit.
+        </p>
+        <div class="stats">
+          <div class="stat"><strong>12+</strong><span>Years in business</span></div>
+          <div class="stat"><strong>8,500+</strong><span>Cleanings delivered</span></div>
+          <div class="stat"><strong>99%</strong><span>On-time completion</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT / CTA ================= -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2>Ready for a spotless space?</h2>
+        <p>Get your free custom quote today &mdash; no commitment, no hidden fees.</p>
+        <a class="btn btn-primary btn-lg" href="mailto:hello@mikay.com">Get My Free Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <a class="brand" href="index.html" aria-label="Mikay Clean Co. - back to top">
+          <svg class="brand-icon" width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="14" fill="#2E7D32" />
+            <path d="M24 6l2.9 6.4 7 .9-5.2 4.9 1.4 6.9L24 22.2l-6.1 3.9 1.4-6.9-5.2-4.9 7-.9L24 6z" fill="#fff" />
+            <g transform="translate(20 26) rotate(-35)">
+              <rect x="0" y="0" width="3" height="13" rx="1.5" fill="#fff" />
+              <rect x="-3.5" y="10" width="10" height="6" rx="2" fill="#dff2fb" />
+              <rect x="-3" y="13" width="2" height="6" rx="1" fill="#fff" />
+              <rect x="0" y="13" width="2" height="6" rx="1" fill="#fff" />
+              <rect x="3" y="13" width="2" height="6" rx="1" fill="#fff" />
+            </g>
+          </svg>
+          <span class="brand-name">Mikay Clean Co.</span>
+        </a>
+
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#why">Why Mikay Clean Co.</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <p class="footer-bottom">&copy; 2026 Mikay Clean Co. All rights reserved. &middot; hello@mikay.com</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

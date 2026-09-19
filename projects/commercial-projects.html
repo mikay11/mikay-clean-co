@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mikay Clean Co. - professional residential and commercial cleaning. Deep cleans, janitorial services, UVC disinfection and more." />
+  <title>Commercial Projects &mdash; Mikay Clean Co.</title>
+
+  <!-- Google Font: Plus Jakarta Sans (rounded geometric sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body id="top">
+
+  <!-- Accessibility: a "skip to content" link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= STICKY NAVIGATION ================= -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+
+      <!-- Left: logo (inline SVG sparkle + broom) + wordmark -->
+      <a class="brand" href="../index.html" aria-label="Mikay Clean Co. - back to top">
+        <svg class="brand-icon" width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect width="48" height="48" rx="14" fill="#2E7D32" />
+          <!-- sparkle -->
+          <path d="M24 6l2.9 6.4 7 .9-5.2 4.9 1.4 6.9L24 22.2l-6.1 3.9 1.4-6.9-5.2-4.9 7-.9L24 6z" fill="#fff" />
+          <!-- broom -->
+          <g transform="translate(20 26) rotate(-35)">
+            <rect x="0" y="0" width="3" height="13" rx="1.5" fill="#fff" />
+            <rect x="-3.5" y="10" width="10" height="6" rx="2" fill="#dff2fb" />
+            <rect x="-3" y="13" width="2" height="6" rx="1" fill="#fff" />
+            <rect x="0" y="13" width="2" height="6" rx="1" fill="#fff" />
+            <rect x="3" y="13" width="2" height="6" rx="1" fill="#fff" />
+          </g>
+        </svg>
+        <span class="brand-name">Mikay Clean Co.</span>
+      </a>
+
+      <!-- Hamburger button (mobile only) -->
+      <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Desktop menu -->
+      <ul class="nav-links">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+
+        <li class="dropdown">
+          <button id="servicesBtn" class="dropdown-btn" aria-expanded="false" aria-controls="servicesMenu">
+            Services <span class="arrow">&#9660;</span>
+          </button>
+          <ul id="servicesMenu" class="dropdown-menu">
+            <li><a href="../services/home-cleaning.html">Home Cleaning</a></li>
+            <li><a href="../services/business-cleaning.html">Business Cleaning</a></li>
+            <li><a href="../services/special-services.html">Special Services</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <button id="projectsBtn" class="dropdown-btn" aria-expanded="false" aria-controls="projectsMenu">
+            Projects <span class="arrow">&#9660;</span>
+          </button>
+          <ul id="projectsMenu" class="dropdown-menu">
+            <li><a href="../projects/residential-projects.html">Residential Projects</a></li>
+            <li><a class="active" href="../projects/commercial-projects.html">Commercial Projects</a></li>
+            <li><a href="../projects/industrial-projects.html">Industrial Projects</a></li>
+          </ul>
+        </li>
+
+        <li><a class="nav-link" href="../about.html">About</a></li>
+        <li><a class="nav-link btn-nav" href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Mobile menu (hidden by default, toggled by the hamburger).
+         Services & Projects inside it work as expandable accordions
+         with their own unique button/menu ids. -->
+    <div id="mobileMenu" class="mobile-menu">
+      <a class="mobile-link" href="../index.html">Home</a>
+
+      <div class="mobile-accordion">
+        <button id="servicesAccBtn" class="mobile-accordion-btn" aria-expanded="false" aria-controls="servicesAccMenu">
+          Services <span class="arrow">&#9660;</span>
+        </button>
+        <ul id="servicesAccMenu" class="mobile-accordion-menu">
+          <li><a href="../services/home-cleaning.html">Home Cleaning</a></li>
+          <li><a href="../services/business-cleaning.html">Business Cleaning</a></li>
+          <li><a href="../services/special-services.html">Special Services</a></li>
+        </ul>
+      </div>
+
+      <div class="mobile-accordion">
+        <button id="projectsAccBtn" class="mobile-accordion-btn" aria-expanded="false" aria-controls="projectsAccMenu">
+          Projects <span class="arrow">&#9660;</span>
+        </button>
+        <ul id="projectsAccMenu" class="mobile-accordion-menu">
+          <li><a href="../projects/residential-projects.html">Residential Projects</a></li>
+          <li><a class="active" href="../projects/commercial-projects.html">Commercial Projects</a></li>
+          <li><a href="../projects/industrial-projects.html">Industrial Projects</a></li>
+        </ul>
+      </div>
+
+      <a class="mobile-link" href="../about.html">About</a>
+      <a class="mobile-link mobile-contact" href="../contact.html">Contact</a>
+    </div>
+  </header><main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Commercial Projects</h1>
+        <p>Business spaces we keep clean so your customers and team feel at home.</p>
+      </div>
+    </section>
+    <section class="page-body">
+      <div class="container">
+        <h2>Examples of our work</h2>
+        <ul class="check-list">
+          <li>Office suites maintained daily for ten-plus years</li>
+          <li>Retail stores and showrooms kept showroom-fresh</li>
+          <li>Restaurants and caf&eacute; floor and table cleaning</li>
+          <li>Gyms and clinics disinfected on a strict schedule</li>
+        </ul>
+        <p>We adapt our schedule to your opening hours so business never stops.</p>
+        <a class="btn btn-primary" href="../contact.html">Free Quote</a>
+        <a class="back-link" href="../index.html">&larr; Back to Home</a>
+      </div>
+    </section>
+  </main><!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <a class="brand" href="../index.html" aria-label="Mikay Clean Co. - back to top">
+          <svg class="brand-icon" width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="14" fill="#2E7D32" />
+            <path d="M24 6l2.9 6.4 7 .9-5.2 4.9 1.4 6.9L24 22.2l-6.1 3.9 1.4-6.9-5.2-4.9 7-.9L24 6z" fill="#fff" />
+            <g transform="translate(20 26) rotate(-35)">
+              <rect x="0" y="0" width="3" height="13" rx="1.5" fill="#fff" />
+              <rect x="-3.5" y="10" width="10" height="6" rx="2" fill="#dff2fb" />
+              <rect x="-3" y="13" width="2" height="6" rx="1" fill="#fff" />
+              <rect x="0" y="13" width="2" height="6" rx="1" fill="#fff" />
+              <rect x="3" y="13" width="2" height="6" rx="1" fill="#fff" />
+            </g>
+          </svg>
+          <span class="brand-name">Mikay Clean Co.</span>
+        </a>
+
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#why">Why Mikay Clean Co.</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <p class="footer-bottom">&copy; 2026 Mikay Clean Co. All rights reserved. &middot; hello@mikay.com</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,640 @@
+﻿/* ============================================================
+   Mikay Clean Co. - style.css
+   Plain CSS (no frameworks). Organized by area:
+   1. CSS variables / reset / base
+   2. Navigation + dropdowns (desktop)
+   3. Mobile menu + accordions
+   4. Hero
+5. Why Mikay Clean Co. carousel
+   6. About / Contact / Footer
+   7. Shared buttons, focus styles, responsive rules
+   ============================================================ */
+
+/* ---------- 1. CSS variables, reset, base ---------- */
+:root {
+  --primary: #2E7D32;            /* brand dark green */
+  --primary-strong: #256B28;     /* darker green for hovers */
+  --primary-deep: #1B5E20;       /* darkest green for text on light bg */
+  --primary-soft: #E7F2E9;       /* light green hover/background tint */
+  --bg-tint: #F4FAF6;            /* very light green for alternating sections */
+  --white: #ffffff;
+  --ink: #111111;                /* near-black headings */
+  --muted: #777777;              /* light gray body text */
+  --border: #e4edf4;
+
+  --radius-sm: 8px;              /* buttons */
+  --radius-md: 16px;             /* cards */
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 6px 18px rgba(17, 17, 17, 0.08);
+  --shadow-md: 0 16px 40px rgba(17, 17, 17, 0.12);
+
+  --font-main: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;               /* smooth scrolling for nav links */
+  scroll-padding-top: 96px;              /* keep anchors clear of sticky nav */
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+h1, h2, h3 {
+  color: var(--ink);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.container { width: min(1120px, 92%); margin-inline: auto; }
+
+/* Visible, high-contrast focus ring for keyboard users */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Skip link for screen reader / keyboard users */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--primary-deep);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 0 0 10px 0;
+  z-index: 2000;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Buttons (shared) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.35);
+}
+.btn-primary:hover {
+  background: var(--primary-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(46, 125, 50, 0.4);
+}
+.btn-outline {
+  background: #fff;
+  color: var(--primary-deep);
+  border: 2px solid var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary-soft);
+  transform: translateY(-2px);
+}
+.btn-lg { padding: 1rem 2.2rem; font-size: 1.05rem; }
+.play-icon { color: var(--primary); }
+
+/* ---------- 2. Sticky navigation + desktop dropdowns ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(1200px, 94%);
+  margin-inline: auto;
+  height: 72px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.brand-icon { border-radius: 10px; flex-shrink: 0; }
+.brand-name {
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--primary-deep);
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.nav-links > li > a.nav-link {
+  display: inline-block;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  border-radius: var(--radius-sm);
+}
+.nav-links > li > a.nav-link:hover {
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+}
+.nav-links > li > a.nav-link.active { color: var(--primary-deep); }
+
+/* Contact link styled as a solid blue button */
+a.nav-link.btn-nav,
+a.nav-link.btn-nav:visited {
+  background: var(--primary);
+  color: #fff;
+  margin-left: 0.5rem;
+  padding: 0.6rem 1.3rem;
+  box-shadow: 0 8px 16px rgba(46, 125, 50, 0.3);
+}
+a.nav-link.btn-nav:hover {
+  background: var(--primary-strong);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Required dropdown structure:
+   .dropdown { position: relative; } keeps the menu beneath its item */
+.dropdown { position: relative; }
+
+.dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.dropdown-btn:hover {
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+}
+.dropdown-btn .arrow {
+  font-size: 0.6rem;
+  color: var(--primary);
+  line-height: 1;
+}
+
+/* Required: hidden by default, appears directly below its parent item */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 230px;
+  margin-top: 10px;
+  padding: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  z-index: 1001;
+}
+
+/* Required: the .show class makes the menu visible (JS adds it) */
+.dropdown-menu.show {
+  display: block;
+  animation: menuFade 0.18s ease-out;
+}
+
+@keyframes menuFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Dropdown items with the light-blue hover effect */
+.dropdown-menu a {
+  display: block;
+  padding: 0.55rem 0.8rem;
+  border-radius: var(--radius-sm);
+  color: #3a3a3a;
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+.dropdown-menu a:hover {
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+}
+
+/* ---------- Hamburger button (hidden on desktop) ---------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.hamburger-bar {
+  width: 22px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+/* Animate bars into an X when the menu is open */
+.hamburger.open .hamburger-bar:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.open .hamburger-bar:nth-child(2) { opacity: 0; }
+.hamburger.open .hamburger-bar:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ---------- 3. Mobile menu (hidden until hamburger toggles it) ---------- */
+.mobile-menu { display: none; }
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  padding: 4.5rem 0 5rem;
+  background: var(--white);
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  margin-bottom: 1.4rem;
+}
+.hero h1 .block { display: block; }
+.hero p {
+  font-size: 0.98rem;
+  max-width: 46ch;
+  margin-bottom: 2.2rem;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.hero-visual { position: relative; }
+.splash {
+  position: absolute;
+  inset: -6% -10% -10% -10%;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+.splash .blob { filter: blur(16px); }
+/* Photo sits above the splash, rounded, and fades into the white bg at the bottom */
+.hero-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+}
+
+/* ---------- 5. Why Mikay Clean Co. carousel ---------- */
+.why {
+  background: var(--bg-tint);          /* alternating light-blue section */
+  padding: 5rem 0 5.5rem;
+  text-align: center;
+}
+.why h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: 1rem; }
+.section-sub {
+  margin: 0 auto 2.8rem;
+  max-width: 60ch;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.carousel-wrap { position: relative; }
+
+/* Horizontal scroll-snap carousel: cards snap to the center */
+.carousel {
+  display: flex;
+  gap: 1.6rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 26px 6vw 0;
+  scrollbar-width: none;                 /* hide scrollbar in Firefox */
+}
+.carousel::-webkit-scrollbar { display: none; } /* hide scrollbar in Chrome */
+
+.carousel-card {
+  flex: 0 0 340px;
+  max-width: 86%;
+  padding: 1rem 1rem 1.6rem;
+  background: var(--white);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  text-align: left;
+  scroll-snap-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.carousel-card:hover { transform: translateY(-6px); }
+
+/* The centered / active card gets slightly larger with a blue outline + glow.
+   The .active class is applied by script.js when the card reaches center. */
+.carousel-card.active {
+  transform: scale(1.05);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 5px rgba(46, 125, 50, 0.18), var(--shadow-md);
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+.carousel-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.carousel-card p { font-size: 0.88rem; }
+
+.carousel-btn {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--primary-deep);
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.carousel-btn.prev { left: -6px; }
+.carousel-btn.next { right: -6px; }
+.carousel-btn:hover { background: var(--primary); color: #fff; }
+
+/* ---------- 6. About / Contact / Footer ---------- */
+.about { padding: 5rem 0; text-align: center; }
+.about h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: 1rem; }
+
+.stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 2.4rem;
+}
+.stat {
+  background: var(--bg-tint);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.8rem;
+  min-width: 150px;
+}
+.stat strong {
+  display: block;
+  font-size: 1.7rem;
+  color: var(--primary-deep);
+}
+.stat span { font-size: 0.8rem; color: var(--muted); }
+
+.contact {
+  background: var(--bg-tint);
+  padding: 4.5rem 0;
+  text-align: center;
+}
+.contact h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: 0.6rem; }
+.contact p { margin-bottom: 2rem; }
+.contact .btn { display: inline-flex; }
+
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem;
+}
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+.footer-links a:hover { color: var(--primary-deep); }
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+}
+
+/* ---------- 7. Sub-pages (services / projects / about / contact) ---------- */
+.page-hero {
+  background: var(--bg-tint);
+  padding: 4rem 0 3rem;
+}
+.page-hero h1 {
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  margin-bottom: 0.75rem;
+}
+.page-hero p { max-width: 62ch; }
+.page-body { padding: 3.5rem 0 5rem; }
+.page-body h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+.page-body p { max-width: 72ch; margin-bottom: 1rem; }
+.page-body .section-sub { margin: 0 0 2rem; }
+
+.check-list { list-style: none; margin-left: 0; margin-bottom: 1.4rem; }
+.check-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+.check-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0 2.4rem;
+}
+.contact-card .stat { text-align: left; }
+.contact-card .stat strong { color: var(--primary-deep); }
+
+.back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-deep);
+}
+.back-link:hover { text-decoration: underline; }
+
+/* "You are here" marker inside menus */
+.dropdown-menu a.active {
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font-weight: 700;
+}
+.mobile-accordion-menu a.active {
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font-weight: 700;
+}
+.mobile-link.active { color: var(--primary-deep); }
+a.nav-link.btn-nav.active { outline: 2px solid var(--primary-deep); outline-offset: -2px; }
+
+/* ---------- 8. Responsive rules ---------- */
+
+/* Tablets / small screens: stack hero, photo first on mobile */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-visual { order: -1; max-width: 520px; margin-inline: auto; }
+  .hero { text-align: center; }
+  .hero p { margin-inline: auto; }
+  .hero-actions { justify-content: center; }
+}
+
+/* Mobile: below ~768px show hamburger + full-width accordion menu */
+@media (max-width: 767px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--white);
+    padding: 0.6rem 4% 1.6rem;
+    border-top: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .mobile-menu.open {
+    display: flex;
+    animation: menuFade 0.2s ease-out;
+  }
+
+  .mobile-menu .mobile-link {
+    display: block;
+    padding: 0.85rem 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu .mobile-link:hover { color: var(--primary-deep); }
+
+  /* Accordion headers inside the mobile menu */
+  .mobile-accordion-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.85rem 0;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .mobile-accordion-btn .arrow { font-size: 0.6rem; color: var(--primary); }
+  .mobile-accordion-btn:hover { color: var(--primary-deep); }
+
+  /* Accordion panels are static: items push content down (no floating) */
+  .mobile-accordion-menu {
+    display: none;
+    padding-left: 1rem;
+  }
+  .mobile-accordion-menu.show { display: block; }
+  .mobile-accordion-menu a {
+    display: block;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    color: #555;
+    border-radius: var(--radius-sm);
+  }
+  .mobile-accordion-menu a:hover { background: var(--primary-soft); color: var(--primary-deep); }
+
+  /* Contact as a full-width blue button on mobile */
+  .mobile-link.mobile-contact {
+    margin-top: 1rem;
+    text-align: center;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.85rem;
+    box-shadow: 0 8px 16px rgba(46, 125, 50, 0.3);
+  }
+  .mobile-link.mobile-contact:hover { background: var(--primary-strong); color: #fff; }
+}
+
+/* Small phones: one wide card per swipe hides the arrow buttons */
+@media (max-width: 560px) {
+  .carousel-card { flex: 0 0 82%; }
+  .carousel-btn { display: none; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
