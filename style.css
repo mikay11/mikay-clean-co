@@ -231,6 +231,32 @@ a.nav-link.btn-nav:hover {
   line-height: 1;
 }
 
+/* Hover support for desktop (mouse + fine pointer only).
+   Simply moving the cursor over "Services" or "Projects" opens the
+   menu, which makes the dropdown easy to see when the page is
+   checked. Click-to-toggle (driven by script.js) still works too. */
+@media (hover: hover) and (pointer: fine) {
+  .dropdown:hover > .dropdown-btn {
+    color: var(--primary-deep);
+    background: var(--primary-soft);
+  }
+  .dropdown:hover > .dropdown-menu {
+    display: block;
+    animation: menuFade 0.18s ease-out;
+  }
+  /* An invisible bridge fills the 10px gap under the button so the
+     cursor does not "fall out" of the hover area on its way to the
+     menu. */
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 10px;
+  }
+}
+
 /* Required: hidden by default, appears directly below its parent item */
 .dropdown-menu {
   display: none;
